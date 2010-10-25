@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+    <persistence-unit name="teste">
+        <description>
+          PersistenceUnit a ser utilizada pelo JPA, contem informações do banco de dados a ser conectado
+          como dialeto, host, usuario, senha ....
+          Verifique a classe com.fabriciojf.util.JpaUtil, ela utilizara
+          as informacoes contidas nesse arquivo.
+        </description>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+        <mapping-file>META-INF/dominio.orm.xml</mapping-file>
+        <mapping-file>META-INF/consultas.orm.xml</mapping-file>
+
+        <properties>
+
+            <!-- opções do banco de dados mysql
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/fabriciojf"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.connection.password" value="rootroot"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/> -->
+
+            <!-- opções do banco de dados postgres -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1/fabriciojf"/>
+            <property name="hibernate.connection.username" value="postgres"/>
+            <property name="hibernate.connection.password" value="masterkey"/>
+
+
+            <!-- outras opções -->
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!-- Relacionando o método getCurrentSession() à thread. -->
+            <property name="hibernate.current_session_context_class" value="thread"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
